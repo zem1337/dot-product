@@ -1,0 +1,56 @@
+PROCEDURE dot(t1,t2: ARRAY_OF INTEGER[],VAR somme;)
+VAR
+    sum : INTEGER;
+BEGIN
+    FOR i FROM 1 TO t1.length STEP 1  DO
+        sum:=sum+t1[i]*t2[i]
+    END_FOR
+    somme:=sum
+END
+ALGORITHM dot_checkpoint
+VAR
+    V1 : ARRAY_OF INTEGER[]:=[1,0];
+    V2 : ARRAY_OF INTEGER[]:=[0,1];
+    res: INTEGER
+BEGIN
+    IF (V1.length<>V2.length) THEN
+        write ("error")
+    ELSE_IF (V1.length <>2 OR   V1.length<>3) THEN
+        write("error")
+    ELSE
+        dot(V1,V2,res)
+        IF (res=0) THEN
+            write ("orthogonal")
+        ELSE
+            write("non orthogonal")
+        END_IF
+    END_IF
+END
+FUNCTION dot(t1,t2: ARRAY_OF INTEGER[] ) : INTEGER
+VAR
+    sum : INTEGER;
+BEGIN
+    FOR i FROM 1 TO t1.length STEP 1  DO
+        sum:=sum+t1[i]*t2[i]
+    END_FOR
+    RETURN sum ;
+END
+ALGORITHM dot_checkpoint
+VAR
+    V1 : ARRAY_OF INTEGER[]:=[1,0];
+    V2 : ARRAY_OF INTEGER[]:=[0,1];
+    res: INTEGER
+BEGIN
+    IF (V1.length<>V2.length) THEN
+        write ("error")
+    ELSE_IF (V1.length <>2 OR   V1.length<>3) THEN
+        write("error")
+    ELSE
+        res:=dot(V1,V2)
+        IF (res=0) THEN
+            write ("orthogonal")
+        ELSE
+            write("non orthogonal")
+        END_IF
+    END_IF
+END
